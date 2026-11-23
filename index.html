@@ -1,0 +1,101 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="An interactive study of how waiting changes the meaning of an unanswered message.">
+    <title>The Weight of Silence</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="script.js" defer></script>
+  </head>
+  <body>
+    <main class="page-shell">
+      <header class="project-intro">
+        <p class="eyebrow">Feeling Through Function</p>
+        <h1>The Weight<br>of <em>Silence</em></h1>
+        <p class="intro-text">The same silence can feel completely different depending on what was said—and how long you have been waiting.</p>
+        <p class="instruction">Choose a conversation, then move time forward.</p>
+      </header>
+
+      <section class="experience" aria-label="Interactive message experience">
+        <div class="phone">
+          <div class="phone-topbar" aria-hidden="true"><span>9:41</span><span class="phone-notch"></span><span>● ● ▰</span></div>
+          <div class="contact-bar">
+            <div class="avatar" aria-hidden="true">A</div>
+            <div><h2>Alex</h2><p>Messages</p></div>
+          </div>
+          <div class="conversation" aria-live="polite">
+            <p class="day-label">Today</p>
+            <div class="message received" id="contextMessage">Want to grab lunch near campus?</div>
+            <div class="message sent" id="sentMessage">Yes! Does 12:30 work for you?</div>
+            <p class="read-receipt">Seen <span id="seenTime">just now</span></p>
+
+            <div class="reveal-area" id="revealArea" hidden>
+              <div class="message received typing-bubble" id="typingBubble" aria-label="Alex is typing">
+                <span></span><span></span><span></span>
+              </div>
+              <div class="message received reveal-reply" id="recipientReply" hidden></div>
+              <div class="reveal-details" id="revealDetails" hidden>
+                <p class="reveal-kicker">What was happening</p>
+                <p id="actualExplanation"></p>
+                <p class="reflection" id="reflectionText"></p>
+              </div>
+            </div>
+          </div>
+          <div class="empty-composer" aria-hidden="true"><span>Message</span><i></i></div>
+        </div>
+
+        <div class="controls-panel">
+          <div class="control-group">
+            <label for="scenarioSelect">Conversation</label>
+            <div class="select-wrap">
+              <select id="scenarioSelect">
+                <option value="lunch">Lunch plans</option>
+                <option value="personal">A personal conversation</option>
+                <option value="tonight">Tonight's plans</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="control-group time-control">
+            <div class="label-row">
+              <label for="timeSlider">Time since seen</label>
+              <output id="timeOutput" for="timeSlider">0 minutes</output>
+            </div>
+            <input id="timeSlider" type="range" min="0" max="120" value="0" step="1">
+            <div class="range-labels" aria-hidden="true"><span>Now</span><span>30m</span><span>60m</span><span>90m</span><span>2h</span></div>
+          </div>
+
+          <fieldset class="interpretation-control">
+            <legend>What do you think the silence means?</legend>
+            <div class="interpretation-options">
+              <label>
+                <input type="radio" name="interpretation" value="busy">
+                <span>They're probably busy.</span>
+              </label>
+              <label>
+                <input type="radio" name="interpretation" value="avoiding">
+                <span>They're avoiding me.</span>
+              </label>
+              <label>
+                <input type="radio" name="interpretation" value="unsure">
+                <span>I'm not sure.</span>
+              </label>
+            </div>
+          </fieldset>
+
+          <section class="thought-card" aria-labelledby="thought-heading">
+            <div class="thought-heading-row">
+              <p class="thought-label" id="thought-heading">What the sender is thinking</p>
+              <span class="state-badge" id="emotionalStateLabel">Calm</span>
+            </div>
+            <blockquote id="senderThought">“They probably just put their phone down.”</blockquote>
+            <p class="feeling" id="feelingLabel">The silence feels light.</p>
+          </section>
+          <button class="reveal-button" id="revealButton" type="button" disabled>Reveal the Other Side</button>
+          <p class="stage-note" id="revealHint">Choose what you think the silence means first.</p>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>
